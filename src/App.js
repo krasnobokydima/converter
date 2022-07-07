@@ -110,13 +110,12 @@ function App() {
 		}));
 	};
 
-	const handleFromCurrencyAmount = ({ target }) => {
-		const fromCurrencyAmount = target.value;
+	const handleFromCurrencyAmount = ({ target: {value} }) => {
+		let fromCurrencyAmount = value < 0 ? - value : value;;
 
-		console.log(target.value);
 		const { indexFrom, indexTo } = getCurrentIndex();
 
-		const toCurrencyAmount = roundedNumber(target.value * (indexFrom / indexTo));
+		const toCurrencyAmount = roundedNumber(value * (indexFrom / indexTo));
 		setCurrencyExchange((prev) => ({
 			...prev,
 			fromCurrencyAmount,
@@ -124,12 +123,13 @@ function App() {
 		}));
 	};
 
-	const handleToCurrencyAmount = ({ target }) => {
-		const toCurrencyAmount = target.value;
+	const handleToCurrencyAmount = ({ target: {value} }) => {
+		let toCurrencyAmount = value < 0 ? - value : value;
+
 		const { indexFrom, indexTo } = getCurrentIndex();
 
 		const fromCurrencyAmount =
-			Math.round(target.value * (indexTo / indexFrom) * 1000) / 1000;
+			Math.round(value * (indexTo / indexFrom) * 1000) / 1000;
 		setCurrencyExchange((prev) => ({
 			...prev,
 			toCurrencyAmount,
