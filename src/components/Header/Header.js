@@ -9,7 +9,7 @@ const Header = ({ currency }) => (
 				<Tr>
 					<Th>Currency code</Th>
 					<Th>Buy</Th>
-					<Th>Sell</Th>
+					<Th>Sale</Th>
 				</Tr>
 			</Thead>
 
